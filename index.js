@@ -20,6 +20,11 @@ const finalBlock = `<div>Second chunk</div><a href=''>Reload</a>`;
 app.get('/', async (req, res) => {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     res.setHeader('Transfer-Encoding', 'chunked');
+    res.setHeader('Link', '<https://cdnjs.cloudflare.com/ajax/libs/react-redux/7.2.0/react-redux.min.js>; rel=preload; as=script');
+
+    res.flushHeaders();
+
+    await (delay(800))
 
     res.write(firstBlock);
 
